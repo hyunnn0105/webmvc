@@ -16,7 +16,8 @@
 <body>
     
     <h1>jsp버전 회원가입 양식</h1>
-    <form action="/chap02/reg_process" method="post">
+    <% // /chap02/reg_process.jsp => .jsp 붙이기! %>
+    <form action="/chap02/reg_process.jsp" method="post">
                 <label>
                     # 계정명: <input type="text" name="account">
                 </label>

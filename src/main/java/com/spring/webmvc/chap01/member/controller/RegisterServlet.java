@@ -37,7 +37,8 @@ public class RegisterServlet extends HttpServlet {
 
         w.write("</head>\n");
         w.write("<body>\n");
-        w.write("<form action='/reg-process' method='post'>\n"); // /reg-process //
+        w.write("<form action='/reg-process' method='post'>\n"); // /reg-process 
+        // form에 연결하는 주소? 위치 넣어주기 
         w.write("<label># accout: <input type='text' name='account'></label>\n");
         w.write("<label># password: <input type='password' name='password'></label>\n");
         w.write("<label># username: <input type='text' name='userName'></label>\n");

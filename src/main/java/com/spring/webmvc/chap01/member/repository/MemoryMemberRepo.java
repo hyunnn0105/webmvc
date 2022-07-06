@@ -11,7 +11,7 @@ public class MemoryMemberRepo implements MemberRepository{
     // 회원정보 저장소
     private Map<Integer, Member> memberMap = new HashMap<>();
 
-    //싱글톤 패턴구현 - 외부소환 제한
+    //싱글톤 패턴구현 - 외부소환 제한**
     private MemoryMemberRepo(){}
     // 2. 스스로의 객제를 단 하나 생성한다
     private static MemoryMemberRepo instance = new MemoryMemberRepo();

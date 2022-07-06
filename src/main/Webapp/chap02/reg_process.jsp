@@ -6,7 +6,7 @@
 
 <%-- 여기는 jsp 주석입니다~~ --%>
 
-<%-- 필드 선언 --%>
+<%-- // 필드 선언 --%>
 
 <%!  private MemberRepository repository = MemoryMemberRepo.getInstance();  %>
 

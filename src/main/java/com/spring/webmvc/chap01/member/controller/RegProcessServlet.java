@@ -24,10 +24,12 @@ public class RegProcessServlet extends HttpServlet {
         String password = req.getParameter("password");
         String userName = req.getParameter("userName");
 
+        /*
         System.out.println("account = " + account);
         System.out.println("password = " + password);
         System.out.println("userName = " + userName);
 
+         */
 
         // 2. 회원정보를 적절한 저장소에 저장 -> 변경가능성 open
         Member member = new Member(account, password, userName);

@@ -70,8 +70,8 @@ ip의 변경가능성 + 기억하기 어려움
 - URL == URI
 - 
 
-scheme://[userinfo@]host[:port][/path][?query][#fragment]   
-프로토콜  호스트명   포트번호(생략가능) 패스   쿼리 파라미터(ket=value) 
+scheme://[userinfo@]host[:port][/path][?query][#fragment]    
+프로토콜  호스트명   포트번호(생략가능) 패스   쿼리 파라미터(ket=value)   
 https://www.google.com  :443    /search  ?q=hello&hl=ko   
 
 
