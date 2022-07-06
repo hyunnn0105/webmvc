@@ -49,6 +49,10 @@ public class InfoServlet extends HttpServlet {
         // http://localhost:8181/info?hobby=exercise
     }
 
+    private void destory(){
+        System.out.println("\n\n\nservlet difappear?\n");
+    }
+
     private double calcBMI(double cm, double kg){
         double m = cm/100;
         double bmi = kg / (m*m);
