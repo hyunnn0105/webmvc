@@ -125,3 +125,69 @@ json - 공용어
 main 아래 wepapp 경로 생ㅇ성
 test.jsp 파일 생성하기
 .jsp 파일은 html과 java코드 같이 작성할 수 있음
+
+
+
+
+### 컴포넌트 설계
+
+FrontController : servlet
+
+controller랑 view랑 주고받음
+
+![img_3.png](img_3.png)
+
+# 매우중요!!!
+    <p>
+        서버에서 온 메시지 : ${msg}
+        서버에서 온 메시지 : ${number * 3}
+        <--  -->
+
+    </p>
+
+
+chapter4
+1. conroller 생성 -> 하나만!
+2. 하위 컨트롤러 관리할 인터페이스  
+3. 하위 컨트롤러들을 클래스로 생성 후 인터페이스 implements
+
+오류 500 => 자바코드 에러 -> 개발자 잘못이니 되도록 하지말자,,,
+
+    @Override
+    public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        String viewName = "/WEB-INF/views/reg_form.jsp";
+
+        RequestDispatcher dp
+                = request.getRequestDispatcher(viewName);
+        dp.forward(request, response);
+    }
+
+리펙터링할 코드 : view를 forwarding하는 코드
+
+    public class View {
+    private String viewName; // 포워딩할 뷰의 경로
+        public View(String viewName) {
+            this.viewName = viewName;
+        }
+        //포워딩 기능
+        // 준것 -> 포워딩할 경로
+        public void render(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            RequestDispatcher dp = request.getRequestDispatcher(viewName);
+            dp.forward(request, response);
+    
+    
+        }
+    }
+
+
+<br>
+
+    @Override
+    public View process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        return new View("/WEB-INF/views/reg_form.jsp");
+    }
+
+1. But 아직 서블릿의 종속성이 남아있음
+2. "/WEB-INF/views/reg_form.jsp"경로의 문제
