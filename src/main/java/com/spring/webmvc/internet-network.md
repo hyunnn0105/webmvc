@@ -153,6 +153,16 @@ chapter4
 
 오류 500 => 자바코드 에러 -> 개발자 잘못이니 되도록 하지말자,,,
 
+      private final Map<String, ControllerV3> controllerMap = new HashMap<>();
+  
+      public FrontControllerV3(){
+          // 이런거오면 key를 가진 적당한 컨트롤러 시킴
+    //        controllerMap.put("/mvc/v3/join" , new FormController());
+    //        controllerMap.put("/mvc/v3/save" , new SaveController());
+    //        controllerMap.put("/mvc/v3/show" , new ShowController());
+    }
+
+
     @Override
     public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
@@ -190,4 +200,72 @@ chapter4
     }
 
 1. But 아직 서블릿의 종속성이 남아있음
-2. "/WEB-INF/views/reg_form.jsp"경로의 문제
+   1. "/WEB-INF/views/reg_form.jsp"경로의 문제
+
+  ### 리팩터링 - v4
+
+    private final Map<String, ControllerV3> controllerMap = new HashMap<>();
+
+    public FrontControllerV3(){
+        // 이런거오면 key를 가진 적당한 컨트롤러 시킴
+      //        controllerMap.put("/mvc/v3/join" , new FormController());
+      //        controllerMap.put("/mvc/v3/save" , new SaveController());
+      //        controllerMap.put("/mvc/v3/show" , new ShowController());
+      }
+
+
+    // 서블릿에 대한 종속성~~~??
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String uri = req.getRequestURI();
+        System.out.println("front-controller 요청이 들어옴~~~" + uri);
+
+        // 받아둔 uri로 controller
+        // 컨트롤러맵에서 방금 들어온 요청에 따른 적합한 컨트롤러를 꺼내옴
+        ControllerV3 controller = controllerMap.get(uri);
+
+        // uri가 이상한 주소 받을거 대비!
+        /*
+        if (controller == null){
+            // 보여줄게 없을때 슝 -> 404 not found
+            // 에러페이지 따로 제작가능
+            resp.setStatus(404);
+            return;
+        }
+
+         */
+
+        // 요청 파라미터(query parameter)를 전부 읽어서 하위 컨트롤러들에게 보내줌
+        // key: parameter key , value : parameter value
+        Map<String, String> paramMap = createParamMap(req);
+      /*
+      Map<String, String[]> parameterMap = req.getParameterMap();
+      System.out.println("parameterMap = " + parameterMap);
+      
+      */
+
+        // http://localhost:8184/mvc/v3/abc?food=orange&hobby=soccer&age=20&name=tiger
+        View view = controller.process(paramMap);
+        if (view != null) view.render(req, resp);
+
+    }
+
+    private Map<String, String> createParamMap(HttpServletRequest req) {
+        Map<String, String> paramMap = new HashMap<>();
+        Enumeration<String> parameterNames = req.getParameterNames();
+
+        while (parameterNames.hasMoreElements()) {
+            String key = parameterNames.nextElement();
+            String value = req.getParameter(key);
+            paramMap.put(key, value);
+        }
+        return paramMap;
+    }
+
+## capter별 controller
+
+
+V01 - 만들기   
+V02 - jsp로 만들기   
+V03 - servlet 만들기  
+V04 - spring 만들기  
