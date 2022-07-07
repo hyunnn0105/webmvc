@@ -25,8 +25,7 @@ import java.util.Map;
 // '/*'모든 요청을 다 처리한다 -> (/mvc/v1으로 시작)앞에 제약사항 두는 것도 가능!
 public class FrontControllerV3 extends HttpServlet {
 
-    private final Map<String, ControllerV3> controllerMap
-            = new HashMap<>();
+    private final Map<String, ControllerV3> controllerMap = new HashMap<>();
 
     public FrontControllerV3() {
 //        controllerMap.put("/mvc/v3/join", new FormController());
