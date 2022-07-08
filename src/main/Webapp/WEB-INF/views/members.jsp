@@ -17,7 +17,12 @@
                 <li>
                     # 회원번호 ${m.userNum} :
                     , # id : ${m.account}
-                    , # name : ${m.userName}
+                    , <a href="/mvc/v4/member?userNum=${m.userNum}">
+                        # name : ${m.userName}
+                    </a>
+                &nbsp;&nbsp;&nbsp;
+                <a id="rm-btn" href="/mvc/v4/remove?userNum=${m.userNum}">[delete]</a>
+                    
                 </li>
             </c:forEach>
 
@@ -25,6 +30,20 @@
         <!-- 뷰에서 새로운 시작을 할 수도 있음 -->
         
         <a href="/mvc/join">새로운 회원 가입하기</a>
+        
+        <script>
+
+            const $rmBtn = document.querySelector('#rm-btn');
+                    $rmBtn.addEventListener('click', e => {
+                        if (!confirm('진짜루 삭제???')) {
+                            e.preventDefault(); // 링크 이동 중지
+                            // 삭제 취소
+                            return;
+                        }
+                    });
+
+
+        </script>
 
 </body>
 </html>
