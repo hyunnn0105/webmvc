@@ -75,7 +75,7 @@ public class BasicController {
         return "";
     }
 
-    // == 3. 커맨드 객체 이용하기
+    // == 3. ***커맨드 객체 이용하기***
     // ex> /spring/order?oNum=22&goods=dress&amount=3&price=10000 ... 넘어오는 값이 많을때
     @RequestMapping("/spring/order")
     // class type 넣기

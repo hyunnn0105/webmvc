@@ -4,10 +4,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.extern.log4j.Log4j2;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import static com.spring.webmvc.springmvc.chap02.domain.Grade.*;
 
 @Setter @Getter
 @ToString
-@NoArgsConstructor
+@Log4j2
 // domain 클래스는 db랑 1:1로 연결
 public class Score {
     
@@ -20,13 +26,53 @@ public class Score {
     private int total; // 총점
     private double average; // 평균
     private Grade grade; // 학점
-
+    public Score(){
+        log.info("score 기본생성자 호출!!!");
+    }
 
     public Score(String name, int kor, int eng, int math) {
         this.name = name;
         this.kor = kor;
         this.eng = eng;
         this.math = math;
+        calcTotalAndAvg();
+        calcGrade();
+    }
+
+    // rs 간편하게 넘기기?? -> 이 값 받으려면
+    public Score(ResultSet rs) throws SQLException {
+        this.stuNum = rs.getInt("stu_num");
+        this.name = rs.getString("stu_name");
+        this.kor = rs.getInt("kor");
+        this.eng = rs.getInt("eng");
+        this.math = rs.getInt("math");
+        this.total = rs.getInt("total");
+        this.average = rs.getInt("average");
+        this.grade = Grade.valueOf(rs.getString("grade"));
+    }
+
+
+    // 총점평균계산
+    public void calcTotalAndAvg(){
+        this.total = kor + eng + math;
+        this.average = total / 3.0;
+
+    }
+
+    // 학점 계산
+    public void calcGrade(){
+        if (this.average >= 90){
+            this.grade = A;
+        } else if (this.average >= 80) {
+            this.grade = B;
+        } else if (this.average >= 70) {
+            this.grade = C;
+        } else if (this.average >= 60) {
+            this.grade = D;
+        } else {
+            this.grade = F;
+        }
+
     }
 
 

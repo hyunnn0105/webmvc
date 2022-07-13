@@ -1,10 +1,8 @@
 package com.spring.webmvc.springmvc.chap01;
 
-import com.spring.webmvc.servlet.chap04.Model;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,7 +19,9 @@ public class CoffeeController {
             select가 key값 -> americano가 벨류값
             <select id="menu-sel" name="menu">
                         <option value="americano">아메리카노</option>
-                        가격정보도 파라미터로 같이 보내야함 -> input태그 hidden / html 6강 hidden : 보이지 않지만 서버로 전달할 내용
+
+            가격정보도 파라미터로 같이 보내야함 -> input태그 hidden
+            // html 6강 hidden : 보이지 않지만 서버로 전달할 내용
         
         2. 주문하기 버튼
      */
@@ -33,7 +33,7 @@ public class CoffeeController {
         return "chap01/coffee-form";
     }
 
-    // 커피주문요청 - controller view 사이에 전송ㅇ 모뎅
+    // 커피주문요청 - controller view 사이에 전송 모델
 
     // 커피 주문 요청
     @RequestMapping("/coffee/result")
