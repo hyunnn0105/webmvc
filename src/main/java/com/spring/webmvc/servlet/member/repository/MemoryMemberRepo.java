@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Repository // @componat보다 상위?? 개념??
+// @Repository // @componat보다 상위?? 개념??
 public class MemoryMemberRepo implements MemberRepository{
     // 회원정보 저장소
     private Map<Integer, Member> memberMap = new HashMap<>();

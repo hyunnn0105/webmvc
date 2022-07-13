@@ -63,14 +63,14 @@ public class ModelController {
     }
 
     //age-form 띄우기
-    @RequestMapping("model/form")
+    @RequestMapping("/model/form")
     public String form() {
         return "chap01/age-form";
     }
 
     // age데이터 처리
     @RequestMapping("/model/age-check")
-    public String check(int age, Model model) {
+    public String check(@ModelAttribute("age") int age, Model model) {
         // 나이로 출생년도 구해주기 (한국나이)
         int birthYear = LocalDate.now().getYear() - age + 1;
 
