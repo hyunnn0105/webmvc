@@ -4,7 +4,6 @@ import com.spring.webmvc.springmvc.chap02.domain.Score;
 import com.spring.webmvc.springmvc.chap02.repository.ScoreRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 

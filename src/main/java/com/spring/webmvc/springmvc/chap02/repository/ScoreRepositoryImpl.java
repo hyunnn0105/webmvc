@@ -78,6 +78,7 @@ public class ScoreRepositoryImpl implements ScoreRepository{
         return template.queryForObject(sql, (rs, rowNum) -> new Score(rs), stuNum);
     }
 
+    // tkr
     @Override
     public boolean remove(int stuNum) {
         String sql = "DELETE FROM tbl_score WHERE stu_num=?";
