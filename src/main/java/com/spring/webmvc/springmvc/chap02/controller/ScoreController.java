@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 // model!!!! 위치 확인하기
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -20,11 +22,22 @@ public class ScoreController {
     // 점수등록및 조회화면 열기 요청
 
     @RequestMapping("/score/list")
-    public String list(Model model){
+    public String list(@RequestParam(defaultValue = "num") String sort, Model model){
         log.info("/score/list GET req");
         // jsp에게 정보 전달
-        List<Score> scoreList = repository.findAll();
+        List<Score> scoreList = repository.findAll(sort);
 //        System.out.println(scoreList.size());
+        // 이름 마킹 처리
+        for (Score s : scoreList) {
+            String original = s.getName();
+            // 빌더로 더해주는게 좋다
+            StringBuilder markname = new StringBuilder(String.valueOf(original.charAt(0)));
+//            String markname = String.valueOf(original.charAt(0));
+            for (int i = 0; i < original.length() - 1; i++) {
+                markname.append("*");
+            }
+            s.setName(markname.toString());
+        }
         model.addAttribute("scores", scoreList);
         return  "chap02/score-list";
     }
@@ -44,9 +57,10 @@ public class ScoreController {
     2. 상세정보
      */
     @RequestMapping("/score/delete")
-    public String delete(int stuNum){
-        boolean remove = repository.remove(stuNum);
-        log.info("/score/delete POST");
+    public String delete(@RequestParam("stuNum") int sn){
+//        printf같은거??
+        log.info("/score/delete POST - param1 : {}", sn);
+        boolean remove = repository.remove(sn);
 
         if (remove){
             return "redirect:/score/list";
@@ -55,6 +69,7 @@ public class ScoreController {
         }
     }
 
+    /*
     @RequestMapping("/score/detail")
     public String detail(int stuNum, Model model){
         log.info("/score/detail-- ");
@@ -67,6 +82,21 @@ public class ScoreController {
             return "redirect:/";
         }
     }
+
+     */
+
+
+    // modelandview return
+    @RequestMapping("/score/detail")
+    public ModelAndView detail(int stuNum, Model model){
+        log.info("/score/detail get -- param1: {}", stuNum);
+        Score score = repository.findOne(stuNum);
+        ModelAndView mv = new ModelAndView("chap02/score-detail");
+        mv.addObject("s", score);
+
+        return mv;
+    }
+
 
 
 }

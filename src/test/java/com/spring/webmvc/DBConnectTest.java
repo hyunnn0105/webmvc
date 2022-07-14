@@ -29,6 +29,7 @@ public class DBConnectTest {
 
             while (rs.next()){
                 System.out.println(rs.getString("first_name"));
+//                emp.setFirstName(rs.getString("first_name"));
             }
 
         } catch (Exception e) {

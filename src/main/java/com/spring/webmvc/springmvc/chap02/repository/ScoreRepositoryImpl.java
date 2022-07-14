@@ -2,13 +2,9 @@ package com.spring.webmvc.springmvc.chap02.repository;
 
 import com.spring.webmvc.springmvc.chap02.domain.Score;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -32,6 +28,25 @@ public class ScoreRepositoryImpl implements ScoreRepository{
     }
 
     @Override
+    public List<Score> findAll(String sort) {
+        StringBuilder sql = new StringBuilder("SELECT * FROM tbl_score");
+
+        switch (sort) {
+            case "num":
+                sql.append(" ORDER BY stu_num");
+                break;
+            case "name":
+                sql.append(" ORDER BY stu_name");
+                break;
+            case "average":
+                sql.append(" ORDER BY average DESC");
+                break;
+        }
+        return template.query(sql.toString(), (rs, rowNum) -> new Score(rs));
+    }
+
+/*
+    @Override
     public List<Score> findAll() {
         String sql = "SELECT * FROM tbl_score";
         // SELECT문은 그냥 쿼리 사용!
@@ -46,14 +61,15 @@ public class ScoreRepositoryImpl implements ScoreRepository{
                 return new Score(rs);
             }
         });
-         */
+
+
 
 
         // 람다
         return template.query(sql, (rs, rowNum) -> new Score(rs));
-
     }
 
+ */
     @Override
     public Score findOne(int stuNum) {
         String sql = "SELECT * FROM tbl_score WHERE stu_num=?";
@@ -69,3 +85,4 @@ public class ScoreRepositoryImpl implements ScoreRepository{
     }
     //IMpl -> 구현 임플리먼트
 }
+

@@ -44,6 +44,7 @@ class ScoreRepositoryImplTest {
 
     }
 
+    /*
     @Test
     @DisplayName("모든 점수 정보를 조회해야 한다")
     void findAllTest(){
@@ -53,6 +54,8 @@ class ScoreRepositoryImplTest {
             System.out.println(score);
         }
     }
+
+     */
 
     @Test
     @DisplayName("특정 학번에 대한 점수정보를 조회해야 한다")

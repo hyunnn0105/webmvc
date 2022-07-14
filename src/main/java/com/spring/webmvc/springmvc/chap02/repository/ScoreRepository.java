@@ -11,7 +11,8 @@ public interface ScoreRepository {
     boolean save(Score score);
     
     // 전체점수 정보 조회
-    List<Score> findAll();
+
+    List<Score> findAll(String sort);
 
     // 개별점수 조회
     Score findOne(int stuNum);

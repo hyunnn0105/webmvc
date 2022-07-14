@@ -55,8 +55,8 @@
                         <option value="americano">아메리카노</option>
                         <option value="cafeLatte">카페라떼</option>
                         <option value="macchiato">카라멜 마끼아또</option>
-
                     </select>
+                    
                 </label>
                 <label class="price"># 가격: 3000원</label>
                 
