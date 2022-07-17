@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -67,11 +68,11 @@ public class BoardController {
 
         return  mv;
     }
+
     // 삭제
     @RequestMapping("/board/delete")
     public String delete(int boardNo){
         log.info("board delete - param1 : {}", boardService.delete(boardNo));
-
         return boardService.delete(boardNo) ? "redirect:/board/list" : "redirect:/";
 
     }
@@ -79,14 +80,20 @@ public class BoardController {
     // 수정
     @GetMapping("/board/modify")
     public String modify(int boardNo, Model model){
-        Board b = repository.findOne(boardNo);
+        Board b = boardService.findOne(boardNo);
+        // db가서 잡아오기
         model.addAttribute("b", b);
+        log.info("board modify GET 요청!! - param1 : {}", boardNo);
         return "chap04/board-modify";
     }
 
     @PostMapping("/board/modify")
     public String modifycontent(Board board){
-        log.info("board modify GET 요청!! - param1 : {}", board);
-        return  boardService.modify(board) ? "redirect:/board/list" : "redirect:/";
+        log.info("board modify POST 요청!! - param1 : {}", board);
+        // 수정 보낼위치 다시 정하기
+        boardService.modify(board);
+//        return "redirect:/board/modify";
+         return  boardService.modify(board) ? "redirect:/board/content?boardNo=" +  board.getBoardNo() : "redirect:/";
+        // 추가할 기능 생각해보기
     }
 }

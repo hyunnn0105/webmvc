@@ -28,7 +28,7 @@ public class BoardRepositoryImpl implements Boardrepository{
     // 전체조회!! rs 맵핑>?
     @Override
     public List<Board> findAll() {
-        String sql = "SELECT * FROM board";
+        String sql = "SELECT * FROM board ORDER BY board_no DESC";
 
         return template.query(sql, (rs, rowNum) -> new Board(rs));
     }

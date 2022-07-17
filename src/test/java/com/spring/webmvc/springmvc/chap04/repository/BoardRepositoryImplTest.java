@@ -60,14 +60,14 @@ class BoardRepositoryImplTest {
     @Test
     @DisplayName("값이 수정되어야한다.")
     void modifyTest(){
-        Board b = boardrepository.findOne(4);
-        b.setWriter("작성자4");
+        Board b = boardrepository.findOne(5);
+        b.setWriter("작성자5");
         b.setTitle("제목444");
         b.setContent("4444444");
 
         boolean result = boardrepository.modify(b);
 
-        assertEquals("작성자4", b.getWriter());
+        assertEquals("작성자5", b.getWriter());
 
     }
 
