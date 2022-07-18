@@ -16,8 +16,28 @@
         <h1>글 수정</h1>
 
         <form action="/board/modify" method="post">
-
             <label>
+                # ${b.boardNo} 번 게시물
+            </label>
+
+            <input type="hidden" name="boardNo" value="${b.boardNo}">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">작성자
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="writer" value="${b.boardNo}">
+                </label>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">제목
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="title" value="${b.title}">
+                </label>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">글작성
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content">${b.content}</textarea>
+                </label>
+            </div>
+            
+            <!-- <label> 
                 # ${b.boardNo} 번 게시물
             </label>
             <label>
@@ -31,6 +51,7 @@
             <label>
                 # 내용 <input type="text" value="${b.content}" name="content" >
             </label>
+            -->
             <label>
                 <button type="submit">수정</button>
             </label>

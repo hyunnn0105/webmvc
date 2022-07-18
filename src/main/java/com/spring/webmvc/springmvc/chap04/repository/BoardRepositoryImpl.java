@@ -53,4 +53,10 @@ public class BoardRepositoryImpl implements Boardrepository{
                 "WHERE board_no =?";
         return template.update(sql, board.getWriter(), board.getTitle(), board.getContent(), board.getBoardNo())==1;
     }
+
+    @Override
+    public boolean viewCnt(int boardNo) {
+            String sql = "  update board set view_cnt = view_cnt + 1 where board_no = ?";
+            return template
+    }
 }

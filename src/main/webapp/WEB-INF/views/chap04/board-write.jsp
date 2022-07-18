@@ -11,9 +11,13 @@
 </head>
 
 <style>
+    form {
+        width: 90%;
+    }
     
-    .mb-3{
-        width: 80%;
+    .form-control{
+        width: 100%;
+        margin: 10px auto;
     }
     
     input{

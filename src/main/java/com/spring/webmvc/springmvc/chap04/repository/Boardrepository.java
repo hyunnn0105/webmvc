@@ -20,4 +20,8 @@ public interface Boardrepository {
 
     // 수정
     boolean modify(Board board);
+
+    // 조회수
+    boolean viewCnt(int boardNo);
+
 }

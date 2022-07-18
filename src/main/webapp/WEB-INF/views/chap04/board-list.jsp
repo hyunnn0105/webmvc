@@ -19,7 +19,7 @@
         padding: 30px 0px;
     }
 
-    .alert alert-dark{
+    .alert{
         width: 90%;
         margin: 10px auto;
     }

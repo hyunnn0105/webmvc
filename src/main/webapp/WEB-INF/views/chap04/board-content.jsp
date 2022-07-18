@@ -25,6 +25,14 @@
       }
       .row.content {height: auto;} 
     }
+
+    .col-sm-9 {
+      margin: 10px auto;
+    }
+
+    .btns{
+      padding: 10px auto;
+    }
   </style>
 <body>
     <section class="detail">
