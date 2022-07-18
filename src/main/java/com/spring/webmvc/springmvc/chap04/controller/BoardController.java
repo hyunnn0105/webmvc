@@ -69,7 +69,7 @@ public class BoardController {
     }
 
     // 삭제
-    @RequestMapping("/board/delete")
+    @GetMapping("/board/delete")
     public String delete(int boardNo){
         log.info("board delete - param1 : {}", boardService.delete(boardNo));
         return boardService.delete(boardNo) ? "redirect:/board/list" : "redirect:/";

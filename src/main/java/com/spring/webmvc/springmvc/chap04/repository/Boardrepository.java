@@ -22,6 +22,6 @@ public interface Boardrepository {
     boolean modify(Board board);
 
     // 조회수
-    boolean viewCnt(int boardNo);
+    int viewCnt(int boardNo);
 
 }
