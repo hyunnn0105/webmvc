@@ -61,7 +61,7 @@ public class BoardController {
     public ModelAndView showcontent(int boardNo){
         log.info("board content - param1: {}", boardService.findOne(boardNo));
         Board result = boardService.findOne(boardNo);
-
+        int cntService = boardService.viewCntService(boardNo);
         ModelAndView mv = new ModelAndView("chap04/board-content");
         mv.addObject("no",result);
 

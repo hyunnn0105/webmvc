@@ -60,6 +60,7 @@
           <th scope="col">작성자</th>
           <th scope="col">제목</th>
           <th scope="col">등록일</th>
+          <th scope="col">조회수</th>
           <th scope="col"> </th>
         </tr>
       </thead>
@@ -72,6 +73,7 @@
                     <td>${b.writer}</td>
                         <td><a class="btn-con" href="/board/content?boardNo=${b.boardNo}">${b.title}</a></td>
                             <td>${b.regDate}</td>
+                            <td>${b.viewCnt}</td>
                                 <td><a class="btn-con" href="/board/content?boardNo=${b.boardNo}">수정</a></td>
             </tr>
           </c:forEach>

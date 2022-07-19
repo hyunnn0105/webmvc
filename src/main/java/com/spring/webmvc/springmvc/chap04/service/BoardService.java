@@ -26,4 +26,7 @@ public class BoardService {
     public boolean modify(Board board){
         return boardrepository.modify(board);
     }
+    public int viewCntService(int boardNo){
+        return boardrepository.viewCnt(boardNo);
+    }
 }

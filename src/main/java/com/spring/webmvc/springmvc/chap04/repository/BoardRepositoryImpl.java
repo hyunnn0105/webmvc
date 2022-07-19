@@ -56,7 +56,7 @@ public class BoardRepositoryImpl implements Boardrepository{
 
     @Override
     public int viewCnt(int boardNo) {
-            String sql = "  update board set view_cnt = view_cnt + 1 where board_no = ?";
-            return template
+            String sql = "update board set view_cnt = view_cnt + 1 where board_no = ?";
+            return template.update(sql, boardNo);
     }
 }
