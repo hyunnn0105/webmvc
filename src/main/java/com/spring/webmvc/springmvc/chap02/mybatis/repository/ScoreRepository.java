@@ -1,10 +1,12 @@
-package com.spring.webmvc.springmvc.chap02.repository;
+package com.spring.webmvc.springmvc.chap02.mybatis.repository;
 
-import com.spring.webmvc.springmvc.chap02.domain.Score;
+import com.spring.webmvc.springmvc.chap02.mybatis.domain.Score;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 // 학생의 성적정보를 저장, 조회, 수정, 삭제 하는 저장소 역할
+@Repository
 public interface ScoreRepository {
 
     // 점수 저장

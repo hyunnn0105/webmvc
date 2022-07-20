@@ -1,6 +1,6 @@
-package com.spring.webmvc.springmvc.chap02.repository;
+package com.spring.webmvc.springmvc.chap02.mybatis.repository;
 
-import com.spring.webmvc.springmvc.chap02.domain.Score;
+import com.spring.webmvc.springmvc.chap02.mybatis.domain.Score;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

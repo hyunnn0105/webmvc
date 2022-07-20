@@ -1,8 +1,8 @@
 package com.spring.webmvc.springmvc.chap02.controller;
 
 
-import com.spring.webmvc.springmvc.chap02.domain.Score;
-import com.spring.webmvc.springmvc.chap02.repository.ScoreRepository;
+import com.spring.webmvc.springmvc.chap02.mybatis.domain.Score;
+import com.spring.webmvc.springmvc.chap02.mybatis.repository.ScoreRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;

@@ -1,7 +1,7 @@
 package com.spring.webmvc.springmvc.chap03;
 
 
-import com.spring.webmvc.springmvc.chap02.domain.Score;
+import com.spring.webmvc.springmvc.chap02.mybatis.domain.Score;
 import com.spring.webmvc.springmvc.chap03.service.ScoreService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

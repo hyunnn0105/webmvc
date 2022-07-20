@@ -1,7 +1,6 @@
-package com.spring.webmvc.springmvc.chap02.domain;
+package com.spring.webmvc.springmvc.chap02.mybatis.domain;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
@@ -9,7 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.spring.webmvc.springmvc.chap02.domain.Grade.*;
+import static com.spring.webmvc.springmvc.chap02.mybatis.domain.Grade.*;
 
 @Setter @Getter
 @ToString
