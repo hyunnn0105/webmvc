@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.spring.webmvc.springmvc.chap02.repository.ScoreMapper">
+<mapper namespace="com.spring.webmvc.springmvc.chap02.mybatis.repository.ScoreMapper">
 
     <insert id="save">
         INSERT INTO tbl_score
@@ -17,7 +17,7 @@
         DELETE FROM tbl_score WHERE stu_num=#{stuNum}
     </delete>
 
-    <resultMap id="scoreMap" type="com.spring.webmvc.springmvc.chap02.domain.Score">
+    <resultMap id="scoreMap" type="com.spring.webmvc.springmvc.chap02.mybatis.domain.Score">
         <result column="stu_num" property="stuNum" />
         <result column="stu_name" property="name" />
     </resultMap>

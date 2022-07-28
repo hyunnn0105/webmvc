@@ -22,4 +22,7 @@ public interface ScoreMapper {
 
     // 점수정보 삭제
     boolean remove(int stuNum);
+    
+    // 수정
+//    Score modify(Score score);
 }
